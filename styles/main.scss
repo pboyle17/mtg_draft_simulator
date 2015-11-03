@@ -1,0 +1,43 @@
+$wrapper-width-height:90%;
+$header-font-size:3em;//300%
+$navbar-background:gray;
+$border-radius-div:5px;
+$center-text-align:center;
+$navbar-height:15%;
+$border:solid black 1px;
+$wrapper-height:90%;
+$wrapper-border:solid blue 1px;
+$margin-center:0 auto;
+$body-text-font-size:1em;
+$width
+
+
+#wrapper {
+  width:$wrapper-width-height;
+  border:$wrapper-border;
+  height:$wrapper-width-height;
+  margin:$margin-center;
+
+}
+
+h1 {
+  font-size: $header-font-size;
+}
+
+#navbar {
+  background-color:$navbar-background;
+  border-radius: $border-radius-div;
+  text-align: $center-text-align;
+  height:$navbar-height;
+  border:$border;
+}
+
+body {
+
+}
+
+p {
+  font-size:$body-text-font-size;
+  display:inline-block;
+  width:
+}
