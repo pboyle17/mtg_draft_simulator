@@ -8,14 +8,14 @@ h1 {
   font-size: 3em; }
 
 #navbar {
-  background-color: gray;
+  background-color: #323232;
   border-radius: 5px;
   text-align: center;
   height: 15%;
   border: solid black 1px; }
 
 .paragraph-container {
-  background-color: gray;
+  background-color: #323232;
   display: inline-block;
   width: 33%;
   border-radius: 5px;
@@ -32,7 +32,7 @@ h1 {
 
 #sidebar {
   display: inline-block;
-  background-color: gray;
+  background-color: #323232;
   border-radius: 5px;
   border: red solid 1px;
   width: 14%;
@@ -42,7 +42,7 @@ h1 {
 
 #maincontent {
   display: inline-block;
-  background-color: gray;
+  background-color: #323232;
   border-radius: 5px;
   border: green solid 1px;
   width: 84%;
@@ -55,7 +55,7 @@ h1 {
   margin: .5% auto;
   height: 50px;
   border-radius: 10px;
-  background-color: gray; }
+  background-color: #323232; }
 
 #footerContainer {
   border: orange solid 1px;
@@ -65,13 +65,22 @@ h1 {
   height: 50px; }
 
 select {
-  background-color: gray;
+  background-color: #323232;
   font-size: 1.15em;
   border: solid green 1px; }
 
 button {
-  background-color: gray;
+  background-color: #323232;
   font-size: 1.15em;
   margin-top: 10px; }
+
+body {
+  background-color: black; }
+
+select:hover {
+  background-color: #964b4b; }
+
+#maincontent {
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
