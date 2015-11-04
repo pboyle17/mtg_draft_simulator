@@ -9,15 +9,16 @@ $wrapper-height:90%;
 $wrapper-border:solid blue 1px;
 $margin-center:0 auto;
 $body-text-font-size:1em;
-$width
+$width-paragraph:33%;
+
 
 
 #wrapper {
   width:$wrapper-width-height;
   border:$wrapper-border;
-  height:$wrapper-width-height;
+  //height:$wrapper-width-height;
   margin:$margin-center;
-
+  height:750px;
 }
 
 h1 {
@@ -36,8 +37,64 @@ body {
 
 }
 
-p {
-  font-size:$body-text-font-size;
+
+ #paragraph-container {
+   background-color:$navbar-background;
+    display:inline-block;
+    width:$width-paragraph;
+    border-radius: $border-radius-div;
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+
+    height:10%;
+
+ }
+
+#twocolcontainer {
+  height:60%;
+  width:98%;
+  border:$wrapper-border;
+
+}
+
+#sidebar {
   display:inline-block;
-  width:
+  background-color:$navbar-background;
+  border-radius: $border-radius-div;
+  border:red solid 1px;
+  width:14%;
+  height:500px;
+  margin-top:10px;
+  margin-right:.5%;
+}
+
+#maincontent {
+  display:inline-block;
+  background-color:$navbar-background;
+  border-radius: $border-radius-div;
+  border:green solid 1px;
+  width:84%;
+  height:500px;
+  margin-top:10px;
+  margin-left:.5%;
+}
+
+#footer {
+
+  border:pink solid 1px;
+  margin:.5% auto;
+  height:50px;
+  border-radius:10px;
+  background-color:gray;
+
+}
+
+#footerContainer {
+  border:orange solid 1px;
+  height:100px;
+  text-align:center;
+  margin:0 auto;
+  height:50px;
+
 }
