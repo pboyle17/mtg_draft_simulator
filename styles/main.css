@@ -14,15 +14,16 @@ h1 {
   height: 15%;
   border: solid black 1px; }
 
-#paragraph-container {
+.paragraph-container {
   background-color: gray;
   display: inline-block;
   width: 33%;
   border-radius: 5px;
   text-align: center;
   margin-top: 10px;
-  margin-bottom: 10px;
-  height: 10%; }
+  height: 10%;
+  padding: 10px 0;
+  font-size: 1.5em; }
 
 #twocolcontainer {
   height: 60%;
@@ -62,5 +63,15 @@ h1 {
   text-align: center;
   margin: 0 auto;
   height: 50px; }
+
+select {
+  background-color: gray;
+  font-size: 1.15em;
+  border: solid green 1px; }
+
+button {
+  background-color: gray;
+  font-size: 1.15em;
+  margin-top: 10px; }
 
 /*# sourceMappingURL=main.css.map */

@@ -10,14 +10,22 @@ $wrapper-border:solid blue 1px;
 $margin-center:0 auto;
 $body-text-font-size:1em;
 $width-paragraph:33%;
-
+$page-height:750px;
+$center:center;
+$vertical-margin:10px;
+$paragraph-height:10%;
+$main-height:60%;
+$footer-height:50px;
+$primary-background:gray;
+$sub-header-font-size:1.5em;
+$select-font-size:1.15em;
 
 
 #wrapper {
   width:$wrapper-width-height;
   border:$wrapper-border;
   margin:$margin-center;
-  height:750px;
+  height:$page-height;
 }
 
 h1 {
@@ -37,21 +45,21 @@ body {
 }
 
 
- #paragraph-container {
+ .paragraph-container {
    background-color:$navbar-background;
     display:inline-block;
     width:$width-paragraph;
     border-radius: $border-radius-div;
-    text-align:center;
-    margin-top:10px;
-    margin-bottom:10px;
-
-    height:10%;
+    text-align:$center;
+    margin-top:$vertical-margin;
+    height:$paragraph-height;
+    padding:10px 0;
+    font-size:$sub-header-font-size;
 
  }
 
 #twocolcontainer {
-  height:60%;
+  height:$main-height;
   width:98%;
   border:$wrapper-border;
 
@@ -64,7 +72,7 @@ body {
   border:red solid 1px;
   width:14%;
   height:500px;
-  margin-top:10px;
+  margin-top:$vertical-margin;
   margin-right:.5%;
 }
 
@@ -75,7 +83,7 @@ body {
   border:green solid 1px;
   width:84%;
   height:500px;
-  margin-top:10px;
+  margin-top:$vertical-margin;
   margin-left:.5%;
 }
 
@@ -83,17 +91,30 @@ body {
 
   border:pink solid 1px;
   margin:.5% auto;
-  height:50px;
+  height:$footer-height;
   border-radius:10px;
-  background-color:gray;
+  background-color:$primary-background;
 
 }
 
 #footerContainer {
   border:orange solid 1px;
   height:100px;
-  text-align:center;
+  text-align:$center;
   margin:0 auto;
   height:50px;
 
+}
+
+select {
+  background-color:$primary-background;
+  font-size:$select-font-size;
+  border:solid green 1px;
+}
+
+button {
+  background-color: $primary-background;
+  font-size:$select-font-size;
+  margin-top:10px;
+  
 }
