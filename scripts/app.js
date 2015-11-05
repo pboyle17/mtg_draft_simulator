@@ -1,35 +1,58 @@
 window.onload=function(){
   console.log('javascript is working');
   console.log('all files that this page needs has been loaded');
-  var btn=document.getElementById('button');
-  btn.onclick = function () {
-    maincontent.appendChild(img);
 
-  }//end of btn
 
-  var maincontent=document.getElementById('maincontent');
-  console.log(maincontent);
-  var img = document.createElement('img');
-  console.log(img);
-  img.src=stasisSnare.cardPictureUrl;
-  img.style.display='block';
-  console.log(img.src);
+
+
 
 
 }//end of window.onload function
 
-function card(cardName,cardType,cardPictureUrl,cardColor){
+var btn=document.getElementById('button');
+btn.onclick = function () {
+var rng = Math.floor(Math.random()*5);
+console.log(bfz[rng].name);
+
+}//end of btn
+
+function card(cardName,cardType,cardPictureUrl,cardColor,idNumber){
   this.cardName=cardName;
   this.cardType=cardType;
   this.cardPictureUrl=cardPictureUrl;
   this.cardColor=cardColor;
+  this.idNumber
+  this.initialize=function(domElement){
+    this.selector=document.getElementById(domElement);
+
+  }
+
 
 
 }// end of card Constructor function
 
 //new instance of Constructor Blueprint Card
-var stasisSnare=new card('Stasis Snare','enchantment','https://crazyaboutmtg.files.wordpress.com/2015/09/statis-snare.png?w=625','white');
+var bfz = [stasisSnare,prairieStream,cinderGlade,outnumber,eldraziSkyspawner];
 
+var stasisSnare=new card('Stasis Snare','enchantment','https://crazyaboutmtg.files.wordpress.com/2015/09/statis-snare.png?w=625','white',1);
+
+var prairieStream=new card('Prairie Stream','land','http://i.imgur.com/mSQa1Jk.jpg','colorless',2);
+
+var cinderGlade= new card ('CinderGlade','land','http://i.imgur.com/mSQa1Jk.jpg','colorless',3);
+
+var outnumber = new card ('Outnumber','instant','http://crystalcommerce-assets.s3.amazonaws.com/photos/4243863/large/en_aZv8lOUPKt.png?1442602671','red',4);
+
+var eldraziSkyspawner = new card ('Eldrazi Skyspawner','http://crystalcommerce-assets.s3.amazonaws.com/photos/4242103/large/en_pfw5ha4zkw.png?1442599737','devoid',5);
+
+
+var maincontent=document.getElementById('maincontent');
+// console.log(maincontent);
+var img = document.createElement('img');
+// console.log(img);
+img.src=this.cardPictureUrl;
+img.style.display='inline-block';
+
+// console.log(img.src);
 
 
 
