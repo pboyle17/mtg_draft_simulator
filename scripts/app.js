@@ -3,8 +3,35 @@ window.onload=function(){
   console.log('all files that this page needs has been loaded');
   var btn=document.getElementById('button');
   btn.onclick = function () {
-    return alert('button is working!');
+    maincontent.appendChild(img);
+
   }//end of btn
+
+  var maincontent=document.getElementById('maincontent');
+  console.log(maincontent);
+  var img = document.createElement('img');
+  console.log(img);
+  img.src=stasisSnare.cardPictureUrl;
+  img.style.display='block';
+  console.log(img.src);
+
+
+}//end of window.onload function
+
+function card(cardName,cardType,cardPictureUrl,cardColor){
+  this.cardName=cardName;
+  this.cardType=cardType;
+  this.cardPictureUrl=cardPictureUrl;
+  this.cardColor=cardColor;
+
+
+}// end of card Constructor function
+
+//new instance of Constructor Blueprint Card
+var stasisSnare=new card('Stasis Snare','enchantment','https://crazyaboutmtg.files.wordpress.com/2015/09/statis-snare.png?w=625','white');
+
+
+
 
 
 //declare a selector called maincontent
@@ -90,8 +117,7 @@ window.onload=function(){
 //
 //
 //
-}//end of window.onload function
-//
+
 // //mouse events stored in an array, how to remove an event listener
 //
 // //create an object that can update itself and visually show that if needed.
@@ -169,20 +195,3 @@ window.onload=function(){
 //     this.domElement.innerHTML=statusText;
 //   }
 // };
-
-card = {
-  name:'Eldrazi Skyspawner',
-  color:'Blue',
-  set:'BFZ',
-
-  intialize:function(){
-    console.log('print card to screen');
-  } ,
-
-  printCardName:function(){
-    console.log(this.name);
-    return this.name
-  }
-
-
-}// end of card object
