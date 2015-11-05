@@ -23,8 +23,12 @@ function card(cardName,cardType,cardPictureUrl,cardColor,idNumber){
   this.cardColor=cardColor;
   this.idNumber
   this.initialize=function(domElement){
-    this.selector=document.getElementById(domElement);
+    this.domElement=document.createElement(domElement);
 
+  }// end of intialize method
+  this.render(picture){
+    this.picture;
+    this.selector.appendChild(this.picture);
   }
 
 
