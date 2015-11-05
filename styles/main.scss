@@ -74,6 +74,7 @@ body {
   height:500px;
   margin-top:$vertical-margin;
   margin-right:.5%;
+  position:absolute;
 }
 
 #maincontent {
@@ -85,6 +86,7 @@ body {
   height:500px;
   margin-top:$vertical-margin;
   margin-left:.5%;
+  position:absolute;
 }
 
 #footer {
@@ -116,7 +118,7 @@ button {
   background-color: $primary-background;
   font-size:$select-font-size;
   margin-top:10px;
-  
+
 }
 
 body{
