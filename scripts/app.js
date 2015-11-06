@@ -1,17 +1,19 @@
 $(document).ready(function(){
   console.log('jQuery is working!');
+
   $button=$('button');
+
   $button.click(function(){
     // console.log('button is working');
     // $('#sidebar').append('<br>'+outnumber.cardName);
-    outnumber.initialize();
-    undergrowthChampion.initialize();
-    dranaLiberatorOfMalakir.initialize();
-    windriderPatrol.initialize();
-    eldraziSkyspawner.initialize();
+
   });//end of button.click()
 
+  $.ajax(getCardData);
+
 });//end of document.ready()
+
+console.log('loading..');
 
 function card(cardName,cardPictureUrl){
   this.cardName=cardName;
@@ -26,17 +28,118 @@ function card(cardName,cardPictureUrl){
   }//end of intialize method
 }//end of card constructor
 
- var outnumber = new card('Outnumber','http://mythicspoiler.com/bfz/cards/outnumber.jpg');
- var undergrowthChampion= new card('Undergrowth Champion','http://mythicspoiler.com/bfz/cards/undergrowthchampion.jpg');
- var dranaLiberatorOfMalakir= new card ('Drana, Liberator of Malakir','http://www.mythicspoiler.com/bfz/cards/dranaliberatorofmalakir.jpg');
-  var windriderPatrol= new card ('Windrider Patrol','http://www.mythicspoiler.com/bfz/cards/windriderpatrol.jpg');
-var eldraziSkyspawner = new card ('Eldrazi Skyspawner','http://www.mythicspoiler.com/bfz/cards/eldraziskyspawner.jpg');
+// dont need this now that i have ajax!!!!!!!!!!!!
+//  var outnumber = new card('Outnumber','http://mythicspoiler.com/bfz/cards/outnumber.jpg');
+//  var undergrowthChampion= new card('Undergrowth Champion','http://mythicspoiler.com/bfz/cards/undergrowthchampion.jpg');
+//  var dranaLiberatorOfMalakir= new card ('Drana, Liberator of Malakir','http://www.mythicspoiler.com/bfz/cards/dranaliberatorofmalakir.jpg');
+//   var windriderPatrol= new card ('Windrider Patrol','http://www.mythicspoiler.com/bfz/cards/windriderpatrol.jpg');
+// var eldraziSkyspawner = new card ('Eldrazi Skyspawner','http://www.mythicspoiler.com/bfz/cards/eldraziskyspawner.jpg');
+
+
+var getCardData = {
+  type:'get',
+  url:'http://mtgjson.com/json/BFZ-x.json',
+  dataType:'JSON',
+  success: function(data){
+    console.log('success');
+    console.dir(data);
+    var card=data.cards[Math.floor(Math.random()*301)];
+
+    $('#main-content').append('<div>'+card.multiverseid)+'</div>';
+    // console.log('name:',card.name,'rarity:',card.rarity);
+
+    var commons = [];
+    var uncommons = [];
+    var rares = [];
+    var mythicRares = [];
+
+
+
+    // console.log('data.cards:',data.cards,'type of:',typeof(data.cards));
+    // console.log('data.cards[3]',data.cards[3],'typeof: data.cards[3].rarity',typeof(data.cards[3].rarity));
+
+
+    for(var x=0; x < data.cards.length;x++){
+      if(data.cards[x].rarity=='Common'){
+        // console.log(typeof data.cards[x].rarity);
+        // console.log(data.cards[x].rarity);
+        commons.push(data.cards[x]);
+      }
+    }
+
+    console.log('done sorting the commons');
+
+    for(var x=0; x < data.cards.length;x++){
+      if(data.cards[x].rarity=='Uncommon'){
+        // console.log(typeof data.cards[x].rarity);
+        // console.log(data.cards[x].rarity);
+        uncommons.push(data.cards[x]);
+      }
+    }
+
+    console.log('done sorting the uncommons');
+
+    for(var x=0; x < data.cards.length;x++){
+      if(data.cards[x].rarity=='Rare'){
+        // console.log(typeof data.cards[x].rarity);
+        // console.log(data.cards[x].rarity);
+        rares.push(data.cards[x]);
+      }
+    }
+
+    console.log('done sorting the rares');
+
+    for(var x=0; x < data.cards.length;x++){
+      if(data.cards[x].rarity=='Mythic Rare'){
+        // console.log(typeof data.cards[x].rarity);
+        // console.log(data.cards[x].rarity);
+        mythicRares.push(data.cards[x]);
+      }
+    }
+
+    console.log('done sorting the mythic rares');
+
+    // console.log(commons);
+    // console.log(uncommons);
+    // console.log(rares);
+    // console.log(mythicRares);
+
+    for (var i = 0; i < 10; i++) {
+      var rng=Math.floor(Math.random()*commons.length);
+      console.log('common:',commons[rng].name);
+    }
+
+    for (var i = 0; i < 3 ; i++){
+      var rng=Math.floor(Math.random()*uncommons.length);
+      console.log('uncommon:',uncommons[rng].name);
+    }
+
+//////generating the rare with 1/8 chance of being mythic
+    var rngOneInEightChance=Math.floor(Math.random()*8);
+    if(rngOneInEightChance==7){
+      var rng=Math.floor(Math.random()*mythicRares.length);
+      console.log('mythic rare nice:',mythicRares[rng].name);
+    } else {
+    var rng=Math.floor(Math.random()*rares.length);
+    console.log('rare:',rares[rng].name);
+  }
+
+  $('#main-content').append('<img src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+commons[0].multiverseid+'&type=card');
+
+  console.log(data.cards[0].cards.multiverseid);
+
+  },
+  error: function(){
+    conosle.log('you have an error');
+  }
+
+};
 
 
 
 
 
-
+//End of initialization
 
 
 
