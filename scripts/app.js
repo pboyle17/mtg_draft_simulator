@@ -9,27 +9,27 @@ $(document).ready(function(){
   $button.click(function(){
     // console.log('button is working');
     // $('#sidebar').append('<br>'+outnumber.cardName);
-
+    console.log('button works!');
   });//end of button.click()
 
   $.ajax(getCardData);
 
 });//end of document.ready()
 
-console.log('loading..');
-
-function card(cardName,cardPictureUrl){
-  this.cardName=cardName;
-  this.cardPicture=cardPictureUrl;
-
-
-  this.initialize=function(){
-    console.log('intializing...');
-    $('#sidebar').append('<br>'+cardName);
-    console.log('<img src='+cardPictureUrl+'>');
-    $('#maincontent').append('<img src='+cardPictureUrl+'>');
-  }//end of intialize method
-}//end of card constructor
+// console.log('loading..');
+//
+// function card(cardName,cardPictureUrl){
+//   this.cardName=cardName;
+//   this.cardPicture=cardPictureUrl;
+//
+//
+//   this.initialize=function(){
+//     console.log('intializing...');
+//     $('#sidebar').append('<br>'+cardName);
+//     console.log('<img src='+cardPictureUrl+'>');
+//     $('#maincontent').append('<img src='+cardPictureUrl+'>');
+//   }//end of intialize method
+// }//end of card constructor
 
 // dont need this now that i have ajax!!!!!!!!!!!!
 //  var outnumber = new card('Outnumber','http://mythicspoiler.com/bfz/cards/outnumber.jpg');
@@ -109,41 +109,46 @@ var getCardData = {
     // console.log(rares);
     // console.log(mythicRares);
 
+    //////generating the rare with 1/8 chance of being mythic
+        var rngOneInEightChance=Math.floor(Math.random()*8);
+        if(rngOneInEightChance==7){
+          var rng=Math.floor(Math.random()*mythicRares.length);
+          console.log('mythic rare nice:',mythicRares[rng].name);
+          pack.push(mythicRares[rng]);
+        } else {
+        var rng=Math.floor(Math.random()*rares.length);
+        console.log('rare:',rares[rng].name);
+        pack.push(rares[rng]);
+      }
+
+      for (var i = 0; i < 3 ; i++){
+      var rng=Math.floor(Math.random()*uncommons.length);
+      console.log('uncommon:',uncommons[rng].name);
+      pack.push(uncommons[rng]);
+    }
+
     for (var i = 0; i < 10; i++) {
       var rng=Math.floor(Math.random()*commons.length);
       console.log('common:',commons[rng].name);
       pack.push(commons[rng]);
     }
 
-    for (var i = 0; i < 3 ; i++){
-      var rng=Math.floor(Math.random()*uncommons.length);
-      console.log('uncommon:',uncommons[rng].name);
-      pack.push(uncommons[rng]);
-    }
 
-//////generating the rare with 1/8 chance of being mythic
-    var rngOneInEightChance=Math.floor(Math.random()*8);
-    if(rngOneInEightChance==7){
-      var rng=Math.floor(Math.random()*mythicRares.length);
-      console.log('mythic rare nice:',mythicRares[rng].name);
-      pack.push(mythicRares[rng]);
-    } else {
-    var rng=Math.floor(Math.random()*rares.length);
-    console.log('rare:',rares[rng].name);
-    pack.push(rares[rng]);
-  }
 
   console.log(pack);
 
 
-
 console.log(pack[0].multiverseid);
-  $('#main-content').append('Hello World!');
-  $('#main-content').append('<img src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+pack[0].multiverseid+'&type=card');
+  // $('#main-content').append('Hello World!');
 
-  console.log(data.cards[0].cards.multiverseid);
+  for (var x in pack){
+    $('#maincontent').append('<img class="card" src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+pack[x].multiverseid+'&type=card>');
+}
+  // console.log(data.cards[0].cards.multiverseid);
 
-  },
+
+
+},//end of sucess function
   error: function(){
     conosle.log('you have an error');
   }

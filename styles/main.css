@@ -1,34 +1,49 @@
+body {
+  background-color: black;
+
+}
+
 #wrapper {
+
   width: 90%;
   border: solid blue 1px;
   margin: 0 auto;
-  height: 750px; }
+  text-align:center;
+
+}
 
 h1 {
-  font-size: 3em; }
+  font-size: 3em;
+  margin:0;
+}
 
 #navbar {
   background-color: #323232;
   border-radius: 5px;
   text-align: center;
   height: 15%;
-  border: solid black 1px; }
+   }
 
 .paragraph-container {
   background-color: #323232;
   display: inline-block;
-  width: 33%;
+  width: 31%;
   border-radius: 5px;
   text-align: center;
-  margin-top: 10px;
   height: 10%;
   padding: 10px 0;
-  font-size: 1.5em; }
+  font-size: 1.5em;
+  margin:1%; }
+
+  #boosterTwo {
+    margin:auto 0;
+  }
 
 #twocolcontainer {
-  height: 60%;
   width: 98%;
-  border: solid blue 1px; }
+  border: solid blue 1px;
+  float:inherit;
+}
 
 #sidebar {
   display: inline-block;
@@ -44,41 +59,44 @@ h1 {
   display: inline-block;
   background-color: #323232;
   border-radius: 5px;
-  border: green solid 1px;
-  width: 84%;
-  height: 500px;
-  margin-top: 10px;
-  margin-left: .5%; }
-
-#footer {
-  border: pink solid 1px;
-  margin: .5% auto;
-  height: 50px;
-  border-radius: 10px;
-  background-color: #323232; }
+  width: 100%;
+  margin: auto;
+  text-align:center
+}
 
 #footerContainer {
   border: orange solid 1px;
-  height: 100px;
   text-align: center;
   margin: 0 auto;
-  height: 50px; }
+  height: 100px; }
+
+  #boosterBar {
+    background-color:#323232;
+  }
+
+  .card {
+    border-radius:10px;
+    width:270px;
+    heigth:400px;
+  }
 
 select {
   background-color: #323232;
   font-size: 1.15em;
-  border: solid green 1px; }
+  border: solid green 1px;
+}
 
 button {
   background-color: #323232;
   font-size: 1.15em;
   margin-top: 10px; }
 
-body {
-  background-color: black; }
-
 select:hover {
   background-color: #964b4b; }
+
+  .card:hover {
+    border:rgb(166, 31, 64) solid 5px;
+  }
 
 
 
