@@ -1,3 +1,6 @@
+///lines 129 trying to add card images to the screen possibly have pushed the names of the object to the different rarity arrays instead of the objects themselves.
+
+
 $(document).ready(function(){
   console.log('jQuery is working!');
 
@@ -45,13 +48,14 @@ var getCardData = {
     console.dir(data);
     var card=data.cards[Math.floor(Math.random()*301)];
 
-    $('#main-content').append('<div>'+card.multiverseid)+'</div>';
+
     // console.log('name:',card.name,'rarity:',card.rarity);
 
     var commons = [];
     var uncommons = [];
     var rares = [];
     var mythicRares = [];
+    var pack = [];
 
 
 
@@ -73,10 +77,11 @@ var getCardData = {
       if(data.cards[x].rarity=='Uncommon'){
         // console.log(typeof data.cards[x].rarity);
         // console.log(data.cards[x].rarity);
-        uncommons.push(data.cards[x]);
+        uncommons.push(data.cards[x])
       }
-    }
 
+    }
+    console.log(uncommons);
     console.log('done sorting the uncommons');
 
     for(var x=0; x < data.cards.length;x++){
@@ -107,11 +112,13 @@ var getCardData = {
     for (var i = 0; i < 10; i++) {
       var rng=Math.floor(Math.random()*commons.length);
       console.log('common:',commons[rng].name);
+      pack.push(commons[rng]);
     }
 
     for (var i = 0; i < 3 ; i++){
       var rng=Math.floor(Math.random()*uncommons.length);
       console.log('uncommon:',uncommons[rng].name);
+      pack.push(uncommons[rng]);
     }
 
 //////generating the rare with 1/8 chance of being mythic
@@ -119,12 +126,20 @@ var getCardData = {
     if(rngOneInEightChance==7){
       var rng=Math.floor(Math.random()*mythicRares.length);
       console.log('mythic rare nice:',mythicRares[rng].name);
+      pack.push(mythicRares[rng]);
     } else {
     var rng=Math.floor(Math.random()*rares.length);
     console.log('rare:',rares[rng].name);
+    pack.push(rares[rng]);
   }
 
-  $('#main-content').append('<img src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+commons[0].multiverseid+'&type=card');
+  console.log(pack);
+
+
+
+console.log(pack[0].multiverseid);
+  $('#main-content').append('Hello World!');
+  $('#main-content').append('<img src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+pack[0].multiverseid+'&type=card');
 
   console.log(data.cards[0].cards.multiverseid);
 
