@@ -8,4 +8,4 @@ new constructor function card(cardName,cardType,cardPictureUrl,cardColor).
 built stasisSnare instance of card.
 
 
-![picture of homework](homework.gif)
+![youtube video of website](https://youtu.be/mU7gE-ezCRk)
