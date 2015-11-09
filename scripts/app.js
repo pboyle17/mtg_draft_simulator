@@ -155,9 +155,11 @@ for(var count=0;count<packs.length;count++){
 
   // console.log(pack);
 
+}//end of generating packs loop
 
 // console.log(pack[0].multiverseid);
   // $('#main-content').append('Hello World!');
+  console.log('packs 0 length:',packs[0].length);
 
   for (var x=0;x<packs[0].length;x++){
     console.log(packs[0][x]);
@@ -166,18 +168,33 @@ for(var count=0;count<packs.length;count++){
   // console.log(data.cards[0].cards.multiverseid);
 
   console.log(packs);
-}//end of generating packs loop
+
 
   //need to access property to it multiverse id then serach cards for matching multiverse id.
 
   pool=[];
   $('.card').click(function (){
+
+
+
     var id=this.id;
     for (var card in data.cards){
       // console.log('made it to the for loop');
       if(id==data.cards[card].multiverseid){
-        console.log(data.cards[card]);
+        // console.log(data.cards[card]);
         pool.push(data.cards[card]);
+        // console.log('this refers to:',this)
+        for(var things in packs[0]){
+          // console.log('made it to the for loop');
+          // console.log('pack 0 things multiverseid:',packs[0][things].multiverseid,'this.id:',this.id);
+          if (this.id==packs[0][things].multiverseid){
+            // console.log('SUCCCCCCCEEEESSSSSSSS');
+            packs[0].splice(things,1);
+            // console.log(packs[0])
+          } else {
+            console.log('error in the if statement');
+          }//end of if statement
+        }//end of for loop searching current booster and removing picked card
         this.remove();
       }// end of if statement
     }//end of for loop
@@ -205,8 +222,17 @@ firstBooster.cards=[];
   // console.log(firstBooster.cards);
 
   $('#packView').click(function(){
-    var poolCards= $('.card').detach;
-    $('#maincontent').append(firstBooster.cards);
+    var poolCards = $('.card').remove;
+    console.log('packs 0:',packs[0],'pool cards:',poolCards);
+
+    for (var x=0;x<packs[0].length;x++){
+      console.log(packs[0][x],'count:',x);
+      if(x==0){
+      $('#maincontent').html('<img class="card" id="'+packs[0][x].multiverseid+'" src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+packs[0][x].multiverseid+'&type=card>');
+    } else {   $('#maincontent').append('<img class="card" id="'+packs[0][x].multiverseid+'" src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+packs[0][x].multiverseid+'&type=card>')
+
+    }
+  }
   })//end of packView.click() event listener
 
 
