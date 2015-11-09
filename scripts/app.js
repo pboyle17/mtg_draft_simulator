@@ -134,7 +134,7 @@ for(var count=0;count<packs.length;count++){
 
 
 
-  $('.card').click(function (){
+  var pickCard = function (){
     for (var card in data.cards){//looping through all the cards to relate the img to the object.
       if(this.id==data.cards[card].multiverseid){//push the card to your pool array
         pool.push(data.cards[card]);
@@ -159,9 +159,14 @@ for(var count=0;count<packs.length;count++){
       //change cards picked in second condition of loop to cardsPicked - 1 to get one less card to simulate player picking a card.
 
       if(x==0){
-      $('#maincontent').html('<img class="card" id="'+packs[cardsPicked][x].multiverseid+'" src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+packs[cardsPicked][x].multiverseid+'&type=card>');
+      $('#maincontent').html('<img class="card" id="'+packs[cardsPicked][x].multiverseid+'" src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+packs[cardsPicked][x].multiverseid+'&type=card>').on('click',function(){
+        console.log('Hello World');
+        pickCard();
+      });
   } else {
-    $('#maincontent').append('<img class="card" id="'+packs[cardsPicked][x].multiverseid+'" src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+packs[cardsPicked][x].multiverseid+'&type=card>');
+    $('#maincontent').append('<img class="card" id="'+packs[cardsPicked][x].multiverseid+'" src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+packs[cardsPicked][x].multiverseid+'&type=card>').on('click',function(){
+      console.log('Hello World!');
+    });
 }
 
 }//end of for-loop
