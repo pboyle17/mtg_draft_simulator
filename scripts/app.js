@@ -6,13 +6,18 @@ $(document).ready(function(){
 
   $button=$('button');
 
+
   $button.click(function(){
     // console.log('button is working');
     // $('#sidebar').append('<br>'+outnumber.cardName);
     console.log('button works!');
+
   });//end of button.click()
 
+
+
   $.ajax(getCardData);
+
 
 });//end of document.ready()
 
@@ -55,7 +60,10 @@ var getCardData = {
     var uncommons = [];
     var rares = [];
     var mythicRares = [];
-    var pack = [];
+
+
+
+
 
 
 
@@ -109,42 +117,97 @@ var getCardData = {
     // console.log(rares);
     // console.log(mythicRares);
 
+    var packs=[];
+    for (var i = 0; i < 8; i++) {
+      packs.push([]);
+    }
+
+
+
+console.log(packs);
+
+for(var count=0;count<packs.length;count++){
     //////generating the rare with 1/8 chance of being mythic
         var rngOneInEightChance=Math.floor(Math.random()*8);
         if(rngOneInEightChance==7){
           var rng=Math.floor(Math.random()*mythicRares.length);
           console.log('mythic rare nice:',mythicRares[rng].name);
-          pack.push(mythicRares[rng]);
+          packs[count].push(mythicRares[rng]);
         } else {
         var rng=Math.floor(Math.random()*rares.length);
         console.log('rare:',rares[rng].name);
-        pack.push(rares[rng]);
+        packs[count].push(rares[rng]);
       }
 
       for (var i = 0; i < 3 ; i++){
       var rng=Math.floor(Math.random()*uncommons.length);
       console.log('uncommon:',uncommons[rng].name);
-      pack.push(uncommons[rng]);
+      packs[count].push(uncommons[rng]);
     }
 
     for (var i = 0; i < 10; i++) {
       var rng=Math.floor(Math.random()*commons.length);
       console.log('common:',commons[rng].name);
-      pack.push(commons[rng]);
+      packs[count].push(commons[rng]);
     }
 
 
 
-  console.log(pack);
+  // console.log(pack);
 
 
-console.log(pack[0].multiverseid);
+// console.log(pack[0].multiverseid);
   // $('#main-content').append('Hello World!');
 
-  for (var x in pack){
-    $('#maincontent').append('<img class="card" src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+pack[x].multiverseid+'&type=card>');
+  for (var x=0;x<packs[0].length;x++){
+    console.log(packs[0][x]);
+    $('#maincontent').append('<img class="card" id="'+packs[0][x].multiverseid+'" src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+packs[0][x].multiverseid+'&type=card>');
 }
   // console.log(data.cards[0].cards.multiverseid);
+
+  console.log(packs);
+}//end of generating packs loop
+
+  //need to access property to it multiverse id then serach cards for matching multiverse id.
+
+  pool=[];
+  $('.card').click(function (){
+    var id=this.id;
+    for (var card in data.cards){
+      // console.log('made it to the for loop');
+      if(id==data.cards[card].multiverseid){
+        console.log(data.cards[card]);
+        pool.push(data.cards[card]);
+        this.remove();
+      }// end of if statement
+    }//end of for loop
+      // console.log(type of id[0]);
+
+
+    for(var z in pool){
+      console.log(pool[z].name);
+    }
+
+  });//end of .card.click event listener
+
+var firstBooster={};
+firstBooster.cards=[];
+
+  $('#pool').click(function(){
+   firstBooster.cards.push($('.card').detach());
+
+    for(var stuff in pool){
+      $('#maincontent').append('<img class="card" id="'+pool[stuff].multiverseid+'" src=http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid='+pool[stuff].multiverseid+'&type=card>');
+
+    }//end of for-in loop
+  });// end of #pool.click event listener
+
+  // console.log(firstBooster.cards);
+
+  $('#packView').click(function(){
+    var poolCards= $('.card').detach;
+    $('#maincontent').append(firstBooster.cards);
+  })//end of packView.click() event listener
 
 
 
@@ -154,7 +217,6 @@ console.log(pack[0].multiverseid);
   }
 
 };
-
 
 
 
